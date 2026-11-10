@@ -15,6 +15,8 @@ import net.minecraft.world.level.block.Blocks;
 public class CraftingChestClientGameTest implements FabricClientGameTest {
 	@Override
 	public void runTest(ClientGameTestContext context) {
+		// 16:9 and large enough that the screenshots can also go on the mod page
+		context.getInput().resizeWindow(1280, 720);
 		try (TestSingleplayerContext singleplayer = context.worldBuilder().create()) {
 			singleplayer.getConnection().waitForChunksRender();
 
@@ -41,7 +43,7 @@ public class CraftingChestClientGameTest implements FabricClientGameTest {
 			if (!clientSeesDiamonds) {
 				throw new AssertionError("Client does not see diamonds in first chest slot");
 			}
-			context.takeScreenshot("crafting_chest_single");
+			screenshot(context, "crafting_chest_single");
 
 			// Shift-click the diamonds out of the chest into the player inventory.
 			singleplayer.getServer().runOnServer(server -> {
@@ -75,7 +77,7 @@ public class CraftingChestClientGameTest implements FabricClientGameTest {
 			if (doubleSlots != CraftingChestMenu.CHEST_SLOT_START + 54) {
 				throw new AssertionError("Expected 54 chest slots for a double chest, menu has " + doubleSlots + " slots");
 			}
-			context.takeScreenshot("crafting_chest_double");
+			screenshot(context, "crafting_chest_double");
 			context.runOnClient(mc -> mc.player.closeContainer());
 			context.waitTicks(2);
 
@@ -89,7 +91,7 @@ public class CraftingChestClientGameTest implements FabricClientGameTest {
 			if (vanillaSlots != CraftingChestMenu.CHEST_SLOT_START || !(context.computeOnClient(mc -> mc.player.containerMenu) instanceof CraftingMenu)) {
 				throw new AssertionError("Expected vanilla crafting menu without chest, got " + vanillaSlots + " slots");
 			}
-			context.takeScreenshot("crafting_no_chest");
+			screenshot(context, "crafting_no_chest");
 		}
 	}
 
@@ -98,5 +100,14 @@ public class CraftingChestClientGameTest implements FabricClientGameTest {
 			ServerPlayer player = server.getPlayerList().getPlayers().getFirst();
 			player.openMenu(Blocks.CRAFTING_TABLE.defaultBlockState().getMenuProvider(server.overworld(), table));
 		});
+	}
+
+	/** Takes a screenshot without toasts and chat lines, which change from run to run and clutter the picture. */
+	private static void screenshot(ClientGameTestContext context, String name) {
+		context.runOnClient(mc -> {
+			mc.gui.toastManager().clear();
+			mc.gui.hud.getChat().clearMessages(false);
+		});
+		context.takeScreenshot(name);
 	}
 }
