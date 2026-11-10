@@ -1,4 +1,4 @@
-package com.maxxlive.craftingchestbridge;
+package de.ermackov.craftingchestbridge;
 
 import java.util.Optional;
 
@@ -48,7 +48,7 @@ import net.minecraft.world.level.block.state.BlockState;
  */
 public final class CraftingChestPaperBridge extends JavaPlugin implements Listener {
 	/** Must match {@code ChestInfoPayload.TYPE} of the client mod. */
-	private static final Identifier CHEST_INFO = Identifier.fromNamespaceAndPath("craftingchest", "chest_info");
+	private static final Identifier CHEST_INFO = Identifier.fromNamespaceAndPath("mxcraftingchest", "chest_info");
 	private static final Component CRAFTING_TITLE = Component.translatable("container.crafting");
 	private static final int MAX_CHEST_SIZE = 54;
 

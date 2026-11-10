@@ -1,6 +1,6 @@
-package net.maxxlive.craftingchest.mixin.client;
+package de.ermackov.craftingchest.mixin.client;
 
-import net.maxxlive.craftingchest.CraftingChestMenu;
+import de.ermackov.craftingchest.CraftingChestMenu;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.CraftingScreen;
@@ -27,18 +27,18 @@ public abstract class CraftingScreenMixin extends AbstractContainerScreen<Crafti
 	}
 
 	@Inject(method = "extractBackground", at = @At("TAIL"))
-	private void craftingchest$drawChestPanel(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a, CallbackInfo ci) {
-		if (!(this.menu instanceof CraftingChestMenu chestMenu) || !chestMenu.craftingchest$hasChest() || !chestMenu.craftingchest$isPanelVisible()) {
+	private void mxcraftingchest$drawChestPanel(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float a, CallbackInfo ci) {
+		if (!(this.menu instanceof CraftingChestMenu chestMenu) || !chestMenu.mxcraftingchest$hasChest() || !chestMenu.mxcraftingchest$isPanelVisible()) {
 			return;
 		}
 
-		int rows = chestMenu.craftingchest$getChestRows();
+		int rows = chestMenu.mxcraftingchest$getChestRows();
 		int x = this.leftPos - CraftingChestMenu.PANEL_WIDTH;
 		int y = this.topPos;
 		int topHeight = rows * 18 + 17;
 		// Top border, title bar and chest rows, followed by the 7px bottom border of the chest texture.
 		graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_BACKGROUND, x, y, 0.0F, 0.0F, CraftingChestMenu.PANEL_WIDTH, topHeight, 256, 256);
 		graphics.blit(RenderPipelines.GUI_TEXTURED, CONTAINER_BACKGROUND, x, y + topHeight, 0.0F, 215.0F, CraftingChestMenu.PANEL_WIDTH, 7, 256, 256);
-		graphics.text(this.font, chestMenu.craftingchest$getChestTitle(), x + 8, y + 6, LABEL_COLOR, false);
+		graphics.text(this.font, chestMenu.mxcraftingchest$getChestTitle(), x + 8, y + 6, LABEL_COLOR, false);
 	}
 }

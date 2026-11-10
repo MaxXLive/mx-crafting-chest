@@ -1,4 +1,4 @@
-package net.maxxlive.craftingchest.test;
+package de.ermackov.craftingchest.test;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -8,7 +8,7 @@ import java.nio.file.StandardOpenOption;
 
 import net.fabricmc.fabric.api.client.gametest.v1.FabricClientGameTest;
 import net.fabricmc.fabric.api.client.gametest.v1.context.ClientGameTestContext;
-import net.maxxlive.craftingchest.CraftingChestMenu;
+import de.ermackov.craftingchest.CraftingChestMenu;
 import net.minecraft.client.gui.screens.ConnectScreen;
 import net.minecraft.client.gui.screens.DisconnectedScreen;
 import net.minecraft.client.gui.screens.TitleScreen;

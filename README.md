@@ -66,7 +66,7 @@ Without this check anyone could place a crafting table right outside a claim and
 
 ## How it works
 
-When a crafting table menu opens, the server looks for a chest next to the table and appends its slots to the menu after the 46 vanilla slots. Right before the screen opens, it sends the custom payload `craftingchest:chest_info` (chest size and title) so the client creates the same slots and draws the chest panel. Without that payload the client builds the normal crafting menu.
+When a crafting table menu opens, the server looks for a chest next to the table and appends its slots to the menu after the 46 vanilla slots. Right before the screen opens, it sends the custom payload `mxcraftingchest:chest_info` (chest size and title) so the client creates the same slots and draws the chest panel. Without that payload the client builds the normal crafting menu.
 
 - **Fabric** (`client-fabric`): mixins on `CraftingMenu` add the slots on both sides. The server only does this for clients that registered the payload channel.
 - **Paper** (`server-paper`): the plugin replaces the crafting table menu of players with the mod with its own `CraftingMenu` subclass. Paper builds its click and drag events from an inventory view, so the plugin gives that view a mapping for the extra slots to the chest inventory. Without it, clicks on chest slots would throw and kick the player.

@@ -19,7 +19,7 @@ dependencies {
 fabricApi {
     configureTests {
         createSourceSet = true
-        modId = "craftingchest-test"
+        modId = "mxcraftingchest-test"
         enableGameTests = false
         enableClientGameTests = true
         eula = true

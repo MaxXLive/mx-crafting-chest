@@ -1,27 +1,31 @@
 {
 	"schemaVersion": 1,
-	"id": "craftingchest",
+	"id": "mxcraftingchest",
 	"version": "${version}",
 	"name": "MX Crafting Chest",
 	"description": "Shows the inventory of a chest or barrel next to a crafting table to the left of the crafting screen, so you can take and store items while crafting. Must be installed on the server too (singleplayer works out of the box).",
 	"authors": [
 		"maxxlive"
 	],
+	"contact": {
+		"sources": "https://github.com/MaxXLive/mx-crafting-chest",
+		"issues": "https://github.com/MaxXLive/mx-crafting-chest/issues"
+	},
 	"license": "MIT",
-	"icon": "assets/craftingchest/icon.png",
+	"icon": "assets/mxcraftingchest/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.maxxlive.craftingchest.CraftingChest"
+			"de.ermackov.craftingchest.CraftingChest"
 		],
 		"client": [
-			"net.maxxlive.craftingchest.client.CraftingChestClient"
+			"de.ermackov.craftingchest.client.CraftingChestClient"
 		]
 	},
 	"mixins": [
-		"craftingchest.mixins.json"
+		"mxcraftingchest.mixins.json"
 	],
-	"accessWidener": "craftingchest.classtweaker",
+	"accessWidener": "mxcraftingchest.classtweaker",
 	"depends": {
 		"fabricloader": ">=0.19.0",
 		"fabric-api": "*",

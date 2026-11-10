@@ -1,9 +1,9 @@
-package net.maxxlive.craftingchest.client;
+package de.ermackov.craftingchest.client;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.maxxlive.craftingchest.ChestInfoPayload;
-import net.maxxlive.craftingchest.PendingChestInfo;
+import de.ermackov.craftingchest.ChestInfoPayload;
+import de.ermackov.craftingchest.PendingChestInfo;
 
 public class CraftingChestClient implements ClientModInitializer {
 	@Override

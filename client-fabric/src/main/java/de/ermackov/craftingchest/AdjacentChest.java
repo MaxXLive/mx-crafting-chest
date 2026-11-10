@@ -1,4 +1,4 @@
-package net.maxxlive.craftingchest;
+package de.ermackov.craftingchest;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

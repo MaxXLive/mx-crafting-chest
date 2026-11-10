@@ -1,12 +1,12 @@
-package net.maxxlive.craftingchest.mixin;
+package de.ermackov.craftingchest.mixin;
 
 import java.util.Optional;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.maxxlive.craftingchest.AdjacentChest;
-import net.maxxlive.craftingchest.ChestInfoPayload;
-import net.maxxlive.craftingchest.ChestPanelSlot;
-import net.maxxlive.craftingchest.CraftingChestMenu;
-import net.maxxlive.craftingchest.PendingChestInfo;
+import de.ermackov.craftingchest.AdjacentChest;
+import de.ermackov.craftingchest.ChestInfoPayload;
+import de.ermackov.craftingchest.ChestPanelSlot;
+import de.ermackov.craftingchest.CraftingChestMenu;
+import de.ermackov.craftingchest.PendingChestInfo;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
@@ -41,20 +41,20 @@ public abstract class CraftingMenuMixin extends AbstractCraftingMenu implements 
 	private Player player;
 
 	@Unique
-	private @Nullable Container craftingchest$chest;
+	private @Nullable Container mxcraftingchest$chest;
 	@Unique
-	private int craftingchest$chestRows;
+	private int mxcraftingchest$chestRows;
 	@Unique
-	private Component craftingchest$chestTitle = Component.empty();
+	private Component mxcraftingchest$chestTitle = Component.empty();
 	@Unique
-	private boolean craftingchest$panelVisible = true;
+	private boolean mxcraftingchest$panelVisible = true;
 
 	private CraftingMenuMixin(MenuType<?> menuType, int containerId, int width, int height) {
 		super(menuType, containerId, width, height);
 	}
 
 	@Inject(method = "<init>(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/inventory/ContainerLevelAccess;)V", at = @At("TAIL"))
-	private void craftingchest$addChestSlots(int containerId, Inventory inventory, ContainerLevelAccess access, CallbackInfo ci) {
+	private void mxcraftingchest$addChestSlots(int containerId, Inventory inventory, ContainerLevelAccess access, CallbackInfo ci) {
 		Container chest;
 		Component title;
 		if (this.player instanceof ServerPlayer serverPlayer) {
@@ -70,7 +70,7 @@ public abstract class CraftingMenuMixin extends AbstractCraftingMenu implements 
 			}
 			chest = found.container();
 			title = found.title();
-			this.craftingchest$chest = chest;
+			this.mxcraftingchest$chest = chest;
 		} else {
 			ChestInfoPayload info = PendingChestInfo.take();
 			if (info == null || info.size() <= 0) {
@@ -80,9 +80,9 @@ public abstract class CraftingMenuMixin extends AbstractCraftingMenu implements 
 			title = info.title();
 		}
 
-		this.craftingchest$chestRows = chest.getContainerSize() / 9;
-		this.craftingchest$chestTitle = title;
-		for (int row = 0; row < this.craftingchest$chestRows; row++) {
+		this.mxcraftingchest$chestRows = chest.getContainerSize() / 9;
+		this.mxcraftingchest$chestTitle = title;
+		for (int row = 0; row < this.mxcraftingchest$chestRows; row++) {
 			for (int col = 0; col < 9; col++) {
 				this.addSlot(new ChestPanelSlot(this, chest, col + row * 9, 8 + col * 18 - PANEL_WIDTH, 18 + row * 18));
 			}
@@ -90,14 +90,14 @@ public abstract class CraftingMenuMixin extends AbstractCraftingMenu implements 
 	}
 
 	@Inject(method = "stillValid", at = @At("RETURN"), cancellable = true)
-	private void craftingchest$checkChestStillValid(Player player, CallbackInfoReturnable<Boolean> cir) {
-		if (cir.getReturnValueZ() && this.craftingchest$chest != null && !this.craftingchest$chest.stillValid(player)) {
+	private void mxcraftingchest$checkChestStillValid(Player player, CallbackInfoReturnable<Boolean> cir) {
+		if (cir.getReturnValueZ() && this.mxcraftingchest$chest != null && !this.mxcraftingchest$chest.stillValid(player)) {
 			cir.setReturnValue(false);
 		}
 	}
 
 	@Inject(method = "quickMoveStack", at = @At("HEAD"), cancellable = true)
-	private void craftingchest$quickMoveFromChest(Player player, int slotIndex, CallbackInfoReturnable<ItemStack> cir) {
+	private void mxcraftingchest$quickMoveFromChest(Player player, int slotIndex, CallbackInfoReturnable<ItemStack> cir) {
 		if (slotIndex < CHEST_SLOT_START) {
 			return;
 		}
@@ -129,22 +129,22 @@ public abstract class CraftingMenuMixin extends AbstractCraftingMenu implements 
 	}
 
 	@Override
-	public int craftingchest$getChestRows() {
-		return this.craftingchest$chestRows;
+	public int mxcraftingchest$getChestRows() {
+		return this.mxcraftingchest$chestRows;
 	}
 
 	@Override
-	public Component craftingchest$getChestTitle() {
-		return this.craftingchest$chestTitle;
+	public Component mxcraftingchest$getChestTitle() {
+		return this.mxcraftingchest$chestTitle;
 	}
 
 	@Override
-	public boolean craftingchest$isPanelVisible() {
-		return this.craftingchest$panelVisible;
+	public boolean mxcraftingchest$isPanelVisible() {
+		return this.mxcraftingchest$panelVisible;
 	}
 
 	@Override
-	public void craftingchest$setPanelVisible(boolean visible) {
-		this.craftingchest$panelVisible = visible;
+	public void mxcraftingchest$setPanelVisible(boolean visible) {
+		this.mxcraftingchest$panelVisible = visible;
 	}
 }

@@ -1,4 +1,4 @@
-package net.maxxlive.craftingchest;
+package de.ermackov.craftingchest;
 
 import org.jspecify.annotations.Nullable;
 

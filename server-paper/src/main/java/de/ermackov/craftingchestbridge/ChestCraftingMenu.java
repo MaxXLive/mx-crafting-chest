@@ -1,4 +1,4 @@
-package com.maxxlive.craftingchestbridge;
+package de.ermackov.craftingchestbridge;
 
 import org.bukkit.craftbukkit.inventory.CraftInventory;
 import org.bukkit.craftbukkit.inventory.CraftInventoryCrafting;

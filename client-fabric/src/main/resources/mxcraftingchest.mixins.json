@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "net.maxxlive.craftingchest.mixin",
+	"package": "de.ermackov.craftingchest.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
 		"CraftingMenuMixin"

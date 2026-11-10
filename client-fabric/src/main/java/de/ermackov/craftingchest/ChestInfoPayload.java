@@ -1,4 +1,4 @@
-package net.maxxlive.craftingchest;
+package de.ermackov.craftingchest;
 
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;

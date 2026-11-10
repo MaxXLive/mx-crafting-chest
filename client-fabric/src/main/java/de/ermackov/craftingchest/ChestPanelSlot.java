@@ -1,4 +1,4 @@
-package net.maxxlive.craftingchest;
+package de.ermackov.craftingchest;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.inventory.Slot;
@@ -13,6 +13,6 @@ public class ChestPanelSlot extends Slot {
 
 	@Override
 	public boolean isActive() {
-		return this.menu.craftingchest$isPanelVisible();
+		return this.menu.mxcraftingchest$isPanelVisible();
 	}
 }
