@@ -17,7 +17,6 @@ repositories {
 
 dependencies {
     paperweight.paperDevBundle("$minecraftVersion.build.$paperBuild-stable")
-    compileOnly(files("../../mx-guide/build/libs/MXGuide-26.3-dev.jar"))
 }
 
 java {

@@ -4,4 +4,3 @@ main: de.ermackov.craftingchestbridge.CraftingChestPaperBridge
 api-version: '${minecraftVersion}'
 description: Server-side counterpart of the MX Crafting Chest mod for Paper servers
 authors: [MaxXLive]
-softdepend: [MXGuide]
