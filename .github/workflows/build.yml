@@ -59,7 +59,7 @@ jobs:
         with:
           name: CraftingChest
           path: |
-            client-fabric/build/libs/MXCraftingChest-*.jar
+            client-fabric/build/libs/MXCraftingChest-fabric-*.jar
             server-paper/build/libs/CraftingChestPaperBridge-*.jar
           if-no-files-found: error
 
@@ -72,7 +72,7 @@ jobs:
         run: |
           cat "$RUNNER_TEMP/CHANGELOG.md"
           gh release create "$TAG" \
-            client-fabric/build/libs/MXCraftingChest-"$VERSION".jar \
+            client-fabric/build/libs/MXCraftingChest-fabric-"$VERSION".jar \
             server-paper/build/libs/CraftingChestPaperBridge-"$VERSION".jar \
             --target "$GITHUB_SHA" \
             --title "MX Crafting Chest $VERSION" \
@@ -83,7 +83,7 @@ jobs:
         env:
           CURSEFORGE_TOKEN: ${{ secrets.CURSEFORGE_TOKEN }}
           CURSEFORGE_PROJECT: "1796521"
-          FILE: client-fabric/build/libs/MXCraftingChest-${{ steps.info.outputs.version }}.jar
+          FILE: client-fabric/build/libs/MXCraftingChest-fabric-${{ steps.info.outputs.version }}.jar
           DISPLAY_NAME: MX Crafting Chest ${{ steps.info.outputs.version }}
           CHANGELOG_FILE: ${{ runner.temp }}/CHANGELOG.md
           MC_VERSION: ${{ steps.info.outputs.mc }}
