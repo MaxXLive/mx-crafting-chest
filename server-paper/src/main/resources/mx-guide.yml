@@ -2,7 +2,7 @@ mxguide:
   enabled: true
   id: craftingchest
   name: MXCraftingChest
-  description: Craften direkt aus der benachbarten Truhe
+  description: "Craft directly from an adjacent chest or barrel"
   priority: 30
   silent: false
   message:
