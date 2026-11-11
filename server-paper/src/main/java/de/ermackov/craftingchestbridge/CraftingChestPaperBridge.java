@@ -64,6 +64,7 @@ public final class CraftingChestPaperBridge extends JavaPlugin implements Listen
 		getServer().getMessenger().registerOutgoingPluginChannel(this, CHEST_INFO.toString());
 		getServer().getPluginManager().registerEvents(this, this);
 		saveResource("mx-guide.yml", false);
+		saveResource("mx-guide_de_DE.yml", false);
 	}
 
 	@Override

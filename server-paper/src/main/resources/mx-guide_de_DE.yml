@@ -1,0 +1,11 @@
+mxguide:
+  enabled: true
+  id: craftingchest
+  name: MXCraftingChest
+  description: Craften direkt aus der benachbarten Truhe
+  priority: 30
+  silent: false
+  message:
+    - "Mit dem CraftingChest Client-Mod werden Items aus einer Truhe neben dem Crafting Table direkt verfügbar."
+    - "Truhe oder Barrel direkt neben den Crafting Table stellen, dann wie gewohnt öffnen."
+    - "Kein Command nötig — funktioniert automatisch wenn das Client-Mod installiert ist."
