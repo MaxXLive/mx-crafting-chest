@@ -39,7 +39,6 @@ previous=$(git tag --list "${prefix}*" | grep -E "$semver_re" | sort -V | tail -
 last_any=$(git tag --list | grep -E "^v.*-([0-9]+\.[0-9]+\.[0-9]+|patch-[0-9]+|[0-9]{4})$" | sort -V | tail -1 || true)
 range="HEAD"
 [[ -n "$last_any" ]] && range="${last_any}..HEAD"
-echo "DEBUG: last_any=${last_any} range=${range} tags=$(git tag --list | wc -l)" >&2
 
 features=()
 fixes=()
